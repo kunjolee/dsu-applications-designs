@@ -9,8 +9,7 @@
     "lint": "next lint",
     "prepare": "husky install",
     "check-types": "npx tsc --pretty  --noEmit",
-    "check-format": "prettier --check .",
-    "check-lint": "eslint . --ext ts --ext tsx --ext js"
+    "check-format": "prettier --check ."
   },
   "dependencies": {
     "@next/eslint-plugin-next": "^12.3.1",

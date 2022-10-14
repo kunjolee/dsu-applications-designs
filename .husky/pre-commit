@@ -18,7 +18,7 @@ yarn check-format || (
 
 #Check Eslint Standars
 
-yarn check-lint || (
+yarn lint || (
     echo 'EsLint check failed 
         Make the required changes, add them and try commit again.'
     false;
