@@ -6,7 +6,10 @@
   "extends": [
     "plugin:react/recommended",
     "standard-with-typescript",
-    "prettier"
+    "prettier",
+    "eslint:recommended",
+    "next",
+    "next/core-web-vitals"
   ],
   "overrides": [],
   "parserOptions": {
