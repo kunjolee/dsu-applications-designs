@@ -1,4 +1,25 @@
 #!/usr/bin/env sh
 # . "$(dirname -- "$0")/_/husky.sh"
 
-# npm test
+#"test-all": "yarn check-types && yarn check-format && check-lint && yarn build"
+
+#Check ts-config standars
+yarn check-types || (
+    echo 'Failed type check
+        Please check your type errors in your code.'
+    false;
+)
+#Check prettier standars
+yarn check-format || (
+    echo 'Prettier check failed
+        Run yarn check-format, add changes and try commit again.'
+    false;
+)
+
+#Check Eslint Standars
+
+yarn check-lint || (
+    echo 'EsLint check failed 
+        Make the required changes, add them and try commit again.'
+    false;
+)
