@@ -1,41 +1,45 @@
 {
-  "name": "dsu-app-kl",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "prepare": "husky install",
-    "check-types": "npx tsc --pretty  --noEmit",
-    "check-format": "prettier --check ."
-  },
-  "dependencies": {
-    "@next/eslint-plugin-next": "^12.3.1",
-    "next": "12.3.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^17.1.2",
-    "@commitlint/config-conventional": "^17.1.0",
-    "@types/node": "18.8.4",
-    "@types/react": "18.0.21",
-    "@types/react-dom": "18.0.6",
-    "@typescript-eslint/eslint-plugin": "^5.0.0",
-    "@typescript-eslint/parser": "^5.40.0",
-    "eslint": "^8.0.1",
-    "eslint-config-next": "^12.3.1",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-config-standard-with-typescript": "^23.0.0",
-    "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-n": "^15.0.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-react": "^7.31.10",
-    "husky": "^8.0.0",
-    "plugin": "^0.3.3",
-    "prettier": "^2.7.1",
-    "typescript": "*"
-  }
+    "name": "dsu-app-kl",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "prepare": "husky install",
+        "check-types": "npx tsc --pretty  --noEmit",
+        "check-format": "prettier --check .",
+        "generate-type": "npx generateContentfulTypes"
+    },
+    "dependencies": {
+        "@contentful/rich-text-react-renderer": "^15.12.1",
+        "@next/eslint-plugin-next": "^12.3.1",
+        "contentful": "^9.2.5",
+        "contentful-ts-type-generator": "github:arimkevi/contentful-ts-type-generator",
+        "next": "12.3.1",
+        "react": "18.2.0",
+        "react-dom": "18.2.0"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^17.1.2",
+        "@commitlint/config-conventional": "^17.1.0",
+        "@types/node": "18.8.4",
+        "@types/react": "18.0.21",
+        "@types/react-dom": "18.0.6",
+        "@typescript-eslint/eslint-plugin": "^5.0.0",
+        "@typescript-eslint/parser": "^5.40.0",
+        "eslint": "^8.0.1",
+        "eslint-config-next": "^12.3.1",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-config-standard-with-typescript": "^23.0.0",
+        "eslint-plugin-import": "^2.25.2",
+        "eslint-plugin-n": "^15.0.0",
+        "eslint-plugin-promise": "^6.0.0",
+        "eslint-plugin-react": "^7.31.10",
+        "husky": "^8.0.0",
+        "plugin": "^0.3.3",
+        "prettier": "^2.7.1",
+        "typescript": "*"
+    }
 }

@@ -1,0 +1,57 @@
+.recipe__card {
+    transform: rotateZ(-1deg);
+    border-radius: 3rem;
+}
+
+.recipe__content {
+    background-color: #fff;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    position: relative;
+    top: -40px;
+    left: -10px;
+}
+
+.recipe__info {
+    padding: 16px;
+}
+
+.recipe__info h2 {
+    margin: 4px 0;
+    text-transform: uppercase;
+    color: #413e3e;
+}
+
+.recipe__info p {
+    margin: 0;
+    color: #777;
+}
+
+.recipe__actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.recipe__featured img {
+    border-radius: 3rem;
+}
+
+.recipe__actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.recipe__actions a {
+    color: #fff;
+    background-color: #f01b29;
+    padding: 16px 24px;
+    text-decoration: none;
+
+    transition: background-color 0.5s ease;
+}
+
+.recipe__actions a:hover {
+    background-color: #932b32;
+}

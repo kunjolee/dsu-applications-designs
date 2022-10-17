@@ -1,0 +1,40 @@
+.slug {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+.slug__banner {
+    position: relative;
+    width: 50%;
+    margin: 0 auto;
+}
+.slug__banner img {
+    width: 100%;
+    border-radius: 2rem;
+}
+
+.slug__content {
+    background-color: #fff;
+    position: absolute;
+    bottom: -1rem;
+    right: -0.5em;
+    left: 0;
+    padding: 1rem;
+    transform: rotateZ(1deg);
+}
+
+.slug__title,
+.slug__minutes {
+    text-transform: uppercase;
+    color: #413e3e;
+    font-size: 1rem;
+}
+
+.slug__description {
+    max-width: 1200px;
+}
+
+.slug__info ol {
+    list-style-type: circle;
+}
