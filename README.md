@@ -1,7 +1,13 @@
 # Applications designs - DSU APP
 
-Basic structure
+To run this app locally, yarn dev
 
-## NEXT.js
+## Environment variables configuration
 
-## Typescript
+Rename **.env.template.** file to _.env.local_
+
+## Re build node modules
+
+```
+yarn install
+```
