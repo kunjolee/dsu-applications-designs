@@ -1,8 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import { client } from '../../../config/client';
 
-import { getStaticPaths, getStaticProps } from '../../../pages/recipes/[slug]';
-import RecipePage from '../../../pages/recipes/[slug]';
+import RecipePage, {
+    getStaticPaths,
+    getStaticProps,
+} from '../../../pages/recipes/[slug]';
 import { recipeMock } from '../../../__mocks__';
 
 jest.mock('../../../config/client');

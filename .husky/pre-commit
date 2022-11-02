@@ -17,7 +17,6 @@ yarn check-format || (
 )
 
 #Check Eslint Standars
-
 yarn lint || (
     echo 'EsLint check failed 
         Make the required changes, add them and try commit again.'
@@ -25,3 +24,8 @@ yarn lint || (
 )
 
 #Check jest
+yarn jest || (
+    echo 'Jest tests check failed 
+        Pass all tests, and try commit again.'
+    false;
+)
