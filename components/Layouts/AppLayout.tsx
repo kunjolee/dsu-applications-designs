@@ -34,10 +34,7 @@ const AppLayout = ({ children, description, title, goBack }: Props) => {
                     </a>
                 </Link>
             )}
-            <main style={{ padding: '2rem' }}>
-                <h1>{title}</h1>
-                {children}
-            </main>
+            <main style={{ padding: '2rem' }}>{children}</main>
         </>
     );
 };

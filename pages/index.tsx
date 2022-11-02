@@ -1,5 +1,4 @@
-import type { GetStaticProps, NextPage } from 'next';
-import { Entry } from 'contentful';
+import { GetStaticProps, NextPage } from 'next';
 
 import { RecipeCard } from '../components';
 import { client } from '../config';
@@ -10,8 +9,8 @@ import { AppLayout } from '../components/Layouts';
 import styles from '../styles/Home.module.css';
 
 interface Props {
-    recipe: Entry<IRecipe>[];
-    homepageData: Entry<IHomepage>;
+    recipe: any;
+    homepageData: any;
 }
 
 const Home: NextPage<Props> = ({ recipe, homepageData }) => {
@@ -20,7 +19,13 @@ const Home: NextPage<Props> = ({ recipe, homepageData }) => {
             title={homepageData.fields.title}
             description={homepageData.fields.description}
         >
-            <div className={styles.recipe__list}>
+            <h1 data-testid='homepage-title-test'>
+                {homepageData.fields.title}
+            </h1>
+            <div
+                data-testid='homepage-container-test'
+                className={styles.recipe__list}
+            >
                 {recipe.map((recipe) => (
                     <RecipeCard key={recipe.sys.id} recipe={recipe} />
                 ))}
@@ -29,7 +34,7 @@ const Home: NextPage<Props> = ({ recipe, homepageData }) => {
     );
 };
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
+export const getStaticProps: GetStaticProps = async () => {
     const [{ items: recipeItems }, { items: homepageItems }] =
         await Promise.all([
             client.getEntries<IRecipe>({ content_type: 'recipe' }),
