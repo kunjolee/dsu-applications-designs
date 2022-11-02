@@ -18,7 +18,7 @@
         "resolveJsonModule": true,
         "skipLibCheck": true,
         "sourceMap": true,
-        "strict": false,
+        "strict": true,
         "target": "es2018",
         "incremental": true
     },
@@ -28,6 +28,7 @@
         "**/*.tsx",
         "jest.config.js",
         "__test__/components/RecipeCard/RecipeCard.spec.js",
+        "pages/recipes/__test__/_app.spec.jsx",
         "pages/recipes/__test__/[slug].spec.js"
     ],
     "exclude": ["node_modules"]
