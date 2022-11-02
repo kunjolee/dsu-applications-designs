@@ -14,10 +14,17 @@ const RecipeCard = ({ recipe }: Props) => {
     const { title, slug, cookingTime, thumbnail, textMinsToCook, seeMoreText } =
         recipe.fields;
 
+    console.log(
+        'vamos a print el componentne',
+        thumbnail.fields.file.details.image?.width,
+        thumbnail.fields.file.details.image?.height
+    );
+
     return (
-        <div className={styles.recipe__card}>
+        <div data-testid='recipeCard-container' className={styles.recipe__card}>
             <div className={styles.recipe__featured}>
                 <Image
+                    data-testid='recipe-image-id'
                     src={`https:${thumbnail.fields.file.url}`}
                     width={thumbnail.fields.file.details.image?.width}
                     height={thumbnail.fields.file.details.image?.height}

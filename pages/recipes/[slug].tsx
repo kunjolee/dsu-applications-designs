@@ -70,6 +70,8 @@ const RecipePage = ({ recipe }: Props) => {
 export const getStaticPaths: GetStaticPaths = async () => {
     const res = await client.getEntries<IRecipe>({ content_type: 'recipe' });
 
+    console.log('quiero que mires esto jaime', res);
+
     const paths = res.items.map((item) => ({
         params: { slug: item.fields.slug },
     }));
