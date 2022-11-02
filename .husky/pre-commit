@@ -24,7 +24,7 @@ yarn lint || (
 )
 
 #Check jest
-yarn jest || (
+yarn test || (
     echo 'Jest tests check failed 
         Pass all tests, and try commit again.'
     false;
