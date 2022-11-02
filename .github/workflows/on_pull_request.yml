@@ -16,7 +16,7 @@ jobs:
                   registry-url: 'https://registry.npmjs.org'
 
             - name: Install dependencies
-              run: yarn ci
+              run: yarn install --frozen-lockfile
               timeout-minutes: 15
 
             - name: Running tests
