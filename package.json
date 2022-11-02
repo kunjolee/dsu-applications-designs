@@ -11,7 +11,7 @@
         "check-types": "npx tsc --pretty  --noEmit",
         "check-format": "prettier --check .",
         "generate-type": "npx generateContentfulTypes",
-        "test": "npx jest"
+        "test": "jest"
     },
     "dependencies": {
         "@contentful/rich-text-react-renderer": "^15.12.1",
