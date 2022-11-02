@@ -1,24 +1,19 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { Entry } from 'contentful';
 import { IRecipe } from '../../contentfulTypes';
 
 import styles from './RecipeCard.module.css';
 
 interface Props {
-    recipe: Entry<IRecipe>;
+    recipe: {
+        fields: IRecipe;
+    };
 }
 
 const RecipeCard = ({ recipe }: Props) => {
     const { title, slug, cookingTime, thumbnail, textMinsToCook, seeMoreText } =
         recipe.fields;
-
-    console.log(
-        'vamos a print el componentne',
-        thumbnail.fields.file.details.image?.width,
-        thumbnail.fields.file.details.image?.height
-    );
 
     return (
         <div data-testid='recipeCard-container' className={styles.recipe__card}>

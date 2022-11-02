@@ -18,18 +18,10 @@
         "resolveJsonModule": true,
         "skipLibCheck": true,
         "sourceMap": true,
-        "strict": true,
+        "strict": false,
         "target": "es2018",
         "incremental": true
     },
-    "include": [
-        "next-env.d.ts",
-        "**/*.ts",
-        "**/*.tsx",
-        "jest.config.js",
-        "__test__/components/RecipeCard/RecipeCard.spec.js",
-        "pages/recipes/__test__/_app.spec.jsx",
-        "pages/recipes/__test__/[slug].spec.js"
-    ],
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest.config.js"],
     "exclude": ["node_modules"]
 }

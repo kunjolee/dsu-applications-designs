@@ -10,7 +10,8 @@
         "prepare": "husky install",
         "check-types": "npx tsc --pretty  --noEmit",
         "check-format": "prettier --check .",
-        "generate-type": "npx generateContentfulTypes"
+        "generate-type": "npx generateContentfulTypes",
+        "test": "npx jest"
     },
     "dependencies": {
         "@contentful/rich-text-react-renderer": "^15.12.1",
@@ -27,14 +28,14 @@
         "@testing-library/jest-dom": "^5.16.5",
         "@testing-library/react": "^13.4.0",
         "@testing-library/user-event": "^14.4.3",
-        "@types/jest": "^29.2.0",
+        "@types/jest": "^29.2.1",
         "@types/node": "18.8.4",
         "@types/react": "18.0.21",
         "@types/react-dom": "18.0.6",
-        "@typescript-eslint/eslint-plugin": "^5.0.0",
-        "@typescript-eslint/parser": "^5.40.0",
+        "@typescript-eslint/eslint-plugin": "^5.42.0",
+        "@typescript-eslint/parser": "^5.42.0",
         "babel-jest": "^29.2.2",
-        "eslint": "^8.0.1",
+        "eslint": "^8.26.0",
         "eslint-config-next": "^12.3.1",
         "eslint-config-prettier": "^8.5.0",
         "eslint-config-standard-with-typescript": "^23.0.0",

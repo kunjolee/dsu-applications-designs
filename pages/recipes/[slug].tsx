@@ -1,7 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 
-import { Entry } from 'contentful';
-
 import Image from 'next/image';
 import { client } from '../../config';
 import { IRecipe } from '../../contentfulTypes';
@@ -12,7 +10,9 @@ import styles from '../../styles/Recipe.module.css';
 import { AppLayout } from '../../components/Layouts';
 
 interface Props {
-    recipe: Entry<IRecipe>;
+    recipe: {
+        fields: IRecipe;
+    };
 }
 
 const RecipePage = ({ recipe }: Props) => {
@@ -32,7 +32,7 @@ const RecipePage = ({ recipe }: Props) => {
 
     return (
         <AppLayout title={title} description={description} goBack={goBack}>
-            <div className={styles.slug}>
+            <div data-testid='slug-container-test' className={styles.slug}>
                 <div className={styles.slug__banner}>
                     <Image
                         src={`https:${featuredImage.fields.file.url}`}
@@ -69,8 +69,6 @@ const RecipePage = ({ recipe }: Props) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const res = await client.getEntries<IRecipe>({ content_type: 'recipe' });
-
-    console.log('quiero que mires esto jaime', res);
 
     const paths = res.items.map((item) => ({
         params: { slug: item.fields.slug },
