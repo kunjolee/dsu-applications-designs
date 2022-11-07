@@ -8,14 +8,19 @@ import { Skeleton } from '../../components';
 
 import styles from '../../styles/Recipe.module.css';
 import { AppLayout } from '../../components/Layouts';
+import { useEffect } from 'react';
+import { setRecipe } from '../../store/slices';
+import { useAppDispatch, useAppSelector } from '../../store/hook';
 
-interface Props {
-    recipe: {
-        fields: IRecipe;
-    };
-}
+const RecipePage = ({ recipeProp }: any) => {
+    const { recipe } = useAppSelector((state) => state.recipe);
+    const dispatch = useAppDispatch();
 
-const RecipePage = ({ recipe }: Props) => {
+    useEffect(() => {
+        dispatch(setRecipe(recipeProp));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     if (!recipe) return <Skeleton />;
 
     const {
@@ -28,13 +33,14 @@ const RecipePage = ({ recipe }: Props) => {
         methodTitle,
         ingredientsTitle,
         goBack,
-    } = recipe.fields;
+    } = recipe[0].fields;
 
     return (
         <AppLayout title={title} description={description} goBack={goBack}>
             <div data-testid='slug-container-test' className={styles.slug}>
                 <div className={styles.slug__banner}>
                     <Image
+                        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
                         src={`https:${featuredImage.fields.file.url}`}
                         alt={title}
                         width={featuredImage.fields.file.details.image?.width}
@@ -98,7 +104,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
     return {
         props: {
-            recipe: items[0] ? items[0] : null,
+            recipeProp: items[0] ? items : null,
         },
         revalidate: 10,
     };

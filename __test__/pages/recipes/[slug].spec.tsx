@@ -1,27 +1,41 @@
-import { render, screen } from '@testing-library/react';
+import { render as rtlRender, screen } from '@testing-library/react';
+import { Provider } from 'react-redux';
 import { client } from '../../../config/client';
 
 import RecipePage, {
     getStaticPaths,
     getStaticProps,
 } from '../../../pages/recipes/[slug]';
-import { recipeMock } from '../../../__mocks__';
+
+import { store } from '../../../store/';
+import { recipeSlice } from '../../../store/slices/recipeSlice';
+
+import { recipeItemsMocks } from '../../../__mocks__';
 
 jest.mock('../../../config/client');
 
+const render = (component) =>
+    rtlRender(<Provider store={store}>{component}</Provider>);
+
 describe('Slug page', () => {
     describe('TSX elements', () => {
-        beforeEach(() => {
-            render(<RecipePage recipe={recipeMock} />);
+        it('should test my recipeSlice', () => {
+            render(<RecipePage recipeProp={recipeItemsMocks} />);
+            const action = { type: 'unknown' };
+            expect(recipeSlice.reducer({ recipe: null }, action)).toEqual({
+                recipe: null,
+            });
         });
 
         it('should return Skeleton component when Recipes is null', () => {
-            render(<RecipePage recipe={null} />);
+            render(<RecipePage recipeProp={null} />);
             const skeleton = screen.getByTestId('skeleton-test');
             expect(skeleton).toBeInTheDocument();
         });
 
         it('should have div slug container in document', () => {
+            render(<RecipePage recipeProp={recipeItemsMocks} />);
+
             const AppLayoutSlug = screen.getByTestId('slug-container-test');
 
             expect(AppLayoutSlug).toBeInTheDocument();
@@ -82,11 +96,13 @@ describe('Slug page', () => {
 
             expect(data).toEqual({
                 props: {
-                    recipe: {
-                        fields: {
-                            title: 'my-title-test',
+                    recipeProp: [
+                        {
+                            fields: {
+                                title: 'my-title-test',
+                            },
                         },
-                    },
+                    ],
                 },
                 revalidate: 10,
             });
@@ -102,7 +118,7 @@ describe('Slug page', () => {
 
             expect(data).toEqual({
                 props: {
-                    recipe: null,
+                    recipeProp: null,
                 },
                 revalidate: 10,
             });

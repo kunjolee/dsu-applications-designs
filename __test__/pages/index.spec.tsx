@@ -1,10 +1,15 @@
-import { screen, render } from '@testing-library/react';
+import { screen, render as rtlRender } from '@testing-library/react';
 import Home, { getStaticProps } from '../../pages';
 
 import { client } from '../../config/client';
 import { recipeItemsMocks, homepageItemsMock } from '../../__mocks__';
+import { Provider } from 'react-redux';
+import { store } from '../../store/store';
 
 jest.mock('../../config/client');
+
+const render = (component) =>
+    rtlRender(<Provider store={store}>{component}</Provider>);
 
 describe('Test on Home Page', () => {
     describe('Test Homepage UI', () => {
@@ -21,6 +26,7 @@ describe('Test on Home Page', () => {
 
             expect(title).toHaveTextContent(homepageItemsMock[0].fields.title);
         });
+
         it('should have title in the home page', () => {
             const res = screen.getByTestId('homepage-container-test');
 
