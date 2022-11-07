@@ -7,30 +7,55 @@ import { IHomepage, IRecipe } from '../contentfulTypes';
 import { AppLayout } from '../components/Layouts';
 
 import styles from '../styles/Home.module.css';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../store/';
+import { setRecipe } from '../store/slices';
+import { setHomepage } from '../store/slices/homepageSlice';
 
 interface Props {
     recipe: any;
     homepageData: any;
 }
 
-const Home: NextPage<Props> = ({ recipe, homepageData }) => {
+const Home: NextPage<Props> = ({
+    recipe: recipeStatic,
+    homepageData: homepageStatic,
+}) => {
+    const dispatch = useAppDispatch();
+    const { homepageData } = useAppSelector((state) => state.homepage);
+
+    const { recipe } = useAppSelector((state) => state.recipe);
+
+    useEffect(() => {
+        dispatch(setRecipe(recipeStatic));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [recipeStatic]);
+
+    useEffect(() => {
+        dispatch(setHomepage(homepageStatic));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [homepageStatic]);
+
     return (
-        <AppLayout
-            title={homepageData.fields.title}
-            description={homepageData.fields.description}
-        >
-            <h1 data-testid='homepage-title-test'>
-                {homepageData.fields.title}
-            </h1>
-            <div
-                data-testid='homepage-container-test'
-                className={styles.recipe__list}
+        recipe &&
+        homepageData && (
+            <AppLayout
+                title={homepageData.fields.title}
+                description={homepageData.fields.description}
             >
-                {recipe.map((recipe) => (
-                    <RecipeCard key={recipe.sys.id} recipe={recipe} />
-                ))}
-            </div>
-        </AppLayout>
+                <h1 data-testid='homepage-title-test'>
+                    {homepageData.fields.title}
+                </h1>
+                <div
+                    data-testid='homepage-container-test'
+                    className={styles.recipe__list}
+                >
+                    {recipe.map((recipe) => (
+                        <RecipeCard key={recipe.sys.id} recipe={recipe} />
+                    ))}
+                </div>
+            </AppLayout>
+        )
     );
 };
 
